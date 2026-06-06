@@ -1,0 +1,137 @@
+@charset "UTF-8";
+
+/* 全体を中央に配置 */
+.main-wrapper {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+/* 上部背景に画像を設定 */
+.hero {
+    background-image: url('../51424.jpg');
+    background-size: cover;
+    background-position: center;
+
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* ヘッドラインを力強く */
+.hero h1 {
+    color: black;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    letter-spacing: 2px;
+}
+
+/* 説明文を見やすく */
+.hero p {
+    font-size: 1em;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+h1,p {
+    text-align: left;
+}
+
+/* 箱を横並びにする */
+.container {
+    background-color: lightgray;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* 箱の要素を調整 */
+section {
+    background-color: white;
+    width: 25%;
+    min-width: 250px;
+    height: auto;
+    margin: 10px;
+    padding: 20px;
+    padding-bottom: 50px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* 箱に画像を配置 */
+section img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: top;
+}
+
+/* 文頭を強調 */
+.highlight {
+    font-weight: bold;
+    font-size: 1.2em;
+    color:blue;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+/* 文の後にスペースを作る */
+section p {
+    margin: 12px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+
+    flex-grow: 1;
+}
+
+/* 詳細ボタン */
+section a {
+    display: block;
+    width: 80%;
+    margin: 15px auto 0;
+    padding: 10px 0;
+
+    border: 1px solid black;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+
+    margin-top: auto;
+}
+
+/* ホバー効果 */
+section a:hover {
+    background-color: black;
+    color: white;
+    transition: 0.3s;
+}
+
+/* グレーの下地 */
+.background {
+    background-color: lightgray;
+    max-width: 100%;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* バナー */
+.banner {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.stump-headline {
+    color: #06C755;
+    margin-top: 0;
+}
+
