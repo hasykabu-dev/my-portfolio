@@ -8,7 +8,7 @@
 
 /* 上部背景に画像を設定 */
 .hero {
-    background-image: url('../51424.jpg');
+    background-image: url('./51424.jpg');
     background-size: cover;
     background-position: center;
 
