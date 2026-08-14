@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+/* 全体を中央に配置 */
+.main-wrapper {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+/* 上部背景に画像を設定 */
+.hero {
+    background-image: url('../51424.jpg');
+    background-size: cover;
+    background-position: center;
+
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* ヘッドラインを力強く */
+.hero h1 {
+    color: black;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    letter-spacing: 2px;
+}
+
+/* 説明文を見やすく */
+.hero p {
+    font-size: 1em;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+h1,p {
+    text-align: left;
+}
+
+
+/* バナー */
+.banner {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    /* 地図が仲の枠組みからはみ出さない */
+}
+
+#map {
+    height: 450px;
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 6px;
+}
+
+/* ==========================================
+   ランダム写真スライダー
+   ========================================== */
+
+/* 写真を表示する枠 */
+.photo-slider {
+    width: 100%;
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.slider-box {
+    width: 100%;
+    height: 350px;              /* 写真エリアの高さ */
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #eee;     /* 画像が読み込まれる前の下地色 */
+}
+
+/* スライダー内の画像設定 */
+.slider-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;          /* 写真の縦横比を崩さず綺麗に収める */
+    transition: opacity 0.5s;   /* 画像が切り替わるときのふんわりアニメーション */
+}
+
+/* 説明文エリア（下部） */
+.slider-explain {
+    background-color: #f9f9f9;  /* カードの中で少し引き立たせる薄いグレー */
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid blue;/* アクセントカラーの青い縦線 */
+    margin-top: 15px;
+}
+
+.slider-explain h3 {
+    margin-bottom: 5px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.slider-explain p {
+    color: #555;
+    line-height: 1.5;
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasy's Trip Log</title>
+
+    <!-- Leaflet用のCSSとJSを追加 -->
+    <!-- 地図ライブラリ機能をインターネット経由で借り受ける -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+   
+    <!-- ★ データファイルを外部から読み込む（追記） -->
+    <script src="./photo-data.js"></script>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+   <div class="main-wrapper">
+        <div class="hero">
+            <h1>Hasy's <br>Trip Log</h1>
+            <p>旅の記録</p>
+
+        </div>
+
+        <div class="banner">
+            <h2 style="color: blue;">Interactive Map</h2>
+            <p>ピンをクリックすると、各国の旅のハイライトが表示されます。</p>
+
+            <div id="map"></div>
+
+        </div>
+
+
+        <script>
+        // 地図を描画し、ピンを立てるJavaScript
+        // 1. 地図の初期化（世界全体が見渡せる中心座標とズームレベルを設定）
+        const map = L.map('map').setView([20, 20], 2);
+
+        // 2. OpenStreetMapのタイル（地図画像）を読み込んでマップに追加
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // 3. 訪れた5カ国のデータ定義（緯度・経度とポップアップ内容）
+        const travelSpots = [
+            {
+            country: "シンガポール 🇸🇬",
+            coords: [1.3521, 103.8198],
+            description: "<b>シンガポール</b><br>東アジアの食や文化を体験する旅"
+            },
+            {
+            country: "イギリス 🇬🇧",
+            coords: [51.5074, -0.1278],
+            description: "<b>イギリス（ロンドン）</b><br>伝統的な西洋建築や歴史的な名所を巡る旅"
+            },
+            {
+            country: "韓国 🇰🇷",
+            coords: [37.5665, 126.9780],
+            description: "<b>韓国（ソウル）</b><br>トレンドのグルメと、戦争の歴史を学ぶ旅"
+            },
+            {
+            country: "インド 🇮🇳",
+            coords: [28.6139, 77.2090],
+            description: "<b>インド</b><br>カルチャーショックの連続、インドの多様性を体験する旅"
+            },
+            {
+            country: "ケニア 🇰🇪",
+            coords: [1.2921, 36.8219],
+            description: "<b>ケニア（ナイロビ）</b><br>限界の生活、ヴィクトリア湖での１か月の旅"
+            }
+        ];
+
+        // 4. 配列データをループさせて、各国にピン（マーカー）とポップアップを自動生成
+        travelSpots.forEach(spot => {
+            L.marker(spot.coords)
+            .addTo(map)
+            .bindPopup(spot.description);
+        });
+        </script>
+
+        <!-- ランダムな写真のスライダー -->
+        <div class="banner slider-section">
+            <h2 style="color: blue;">Trip Photos</h2>
+            <p>旅の写真がランダムに表示されます</p>
+
+            <!-- ①写真が表示されるエリア -->
+            <div class="photo-slider">
+                <div class="slider-box">
+                    <img id="slider-image" src="" alt="旅の写真">
+                </div>
+            </div>
+
+            <!-- 画像と連動する説明文エリア -->
+            <div class="slider-explain">
+                <h3 id="slider-country">国名</h3>
+                <p id="slider-description">説明文</p>
+            </div>
+
+            <script>
+                // 1. 操作したいHTML要素を取得しておく
+                const sliderImage = document.getElementById('slider-image');
+                const sliderCountry = document.getElementById('slider-country');
+                const sliderDescription = document.getElementById('slider-description');
+
+                function showRandomPhoto() {
+                    // <!-- ランダムに写真データを選択 -->
+                    const randomIndex = Math.floor(Math.random() * tripPhotos.length);
+                    const selectedData = tripPhotos[randomIndex];
+
+                    // <!-- HTMLの書き換え -->
+                    sliderImage.src = selectedData.image;
+                    sliderCountry.textContent = selectedData.country;
+                    sliderDescription.textContent = selectedData.description;
+
+                }
+
+                // <!-- ページ（DOM）の読み込みが完了した瞬間に、最初の1枚を表示する -->
+                window.addEventListener('DOMContentLoaded', showRandomPhoto);
+
+                // // 5秒（5000ミリ秒）ごとに showRandomPhoto 関数を繰り返し呼び出す -->
+                setInterval(showRandomPhoto, 5000);
+            </script>
+
+        </div>
+    
+        <footer>
+            <p>
+                Address:<br>
+                Email: hasy.kabu@gmail.com<br>
+                Instagram: 〃<br>    
+            </p>
+        </footer>
+    </div>
+
+</body>
+</html>
